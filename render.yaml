@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: amphit-backend
+    env: java
+    plan: free
+    buildCommand: mvn package -DskipTests
+    startCommand: java -jar -Dspring.profiles.active=prod target/*.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        value: amphitSecureJwtKey123456789ForProduction
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d0nf2mhr0fns738vdolg-a.frankfurt-postgres.render.com/amphit
+      - key: SPRING_DATASOURCE_USERNAME
+        value: amphit_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: 1YoZCdjxTdwhEGWxZokCL05PS6bjXZaw
